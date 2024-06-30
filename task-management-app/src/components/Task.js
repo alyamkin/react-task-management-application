@@ -184,16 +184,6 @@ export default function Task({ task, onDeleteTask, onUpdateTask }) {
     Overdue: 'error.main',
   };
 
-  const isTaskOverdue = dayjs().isAfter(dayjs(task.dueDateTime));
-
-  const getTaskStatus = () => {
-    if (isTaskOverdue) {
-      return 'Overdue';
-    }
-
-    return task.status;
-  };
-
   const statusContent = editTask ? (
     <FormControl>
       <InputLabel id="status-label">Status</InputLabel>
@@ -211,8 +201,8 @@ export default function Task({ task, onDeleteTask, onUpdateTask }) {
     </FormControl>
   ) : (
     <Typography
-      color={statusColours[getTaskStatus()]}
-    >{`Status: ${getTaskStatus()}`}</Typography>
+      color={statusColours[task.status]}
+    >{`Status: ${task.status}`}</Typography>
   );
 
   return (

@@ -59,7 +59,7 @@ export default function TasksList({
           Tasks List
         </Typography>
       )}
-      {tasks.filter(filterTasks).sort(sortTasks).map(createTasksCard)}
+      {[...tasks].sort(sortTasks).filter(filterTasks).map(createTasksCard)}
     </>
   );
 }

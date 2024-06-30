@@ -1,5 +1,6 @@
-import { useState, Fragment } from 'react';
+import { useState, Fragment, useEffect } from 'react';
 import { v4 as uuidv4 } from 'uuid';
+import dayjs from 'dayjs';
 import Header from './components/Header';
 import CreateTaskForm from './components/CreateTaskForm';
 import TasksList from './components/TasksList';
@@ -10,6 +11,19 @@ function App() {
   const [tasks, setTasks] = useState([]);
   const [searchText, setSearchText] = useState('');
   const [sortBy, setSortBy] = useState('title');
+
+  useEffect(() => {
+    const updatedTasks = tasks.map((task) => {
+      if (dayjs().isAfter(dayjs(task.dueDateTime))) {
+        return {
+          ...task,
+          status: 'Overdue',
+        };
+      }
+      return task;
+    });
+    setTasks(updatedTasks);
+  }, [searchText, sortBy]);
 
   const createTask = (title, description, dueDateTime) => {
     const task = {
@@ -49,6 +63,8 @@ function App() {
   };
 
   const sortTasks = (sort) => {
+    console.log(sort);
+    console.log(tasks);
     setSortBy(sort);
   };
 
