@@ -26,6 +26,7 @@ export default function CreateTaskForm({ onSubmitCreateTaskForm }) {
   const [descriptionError, setDescriptionError] = useState(false);
   const [dueDateTimeErrorMessage, setDueDateTimeErrorMessage] = useState('');
 
+  // TODO: code duplication. Create custome hook
   const isFormInvalid = () => {
     const invalidTitle = title === '';
     const invalidDescription = description === '';
@@ -56,7 +57,7 @@ export default function CreateTaskForm({ onSubmitCreateTaskForm }) {
     e.preventDefault();
     if (isFormInvalid()) return;
 
-    onSubmitCreateTaskForm(title, description, dueDateTime);
+    onSubmitCreateTaskForm(title, description, dueDateTime.format());
     clearForm();
   };
 
