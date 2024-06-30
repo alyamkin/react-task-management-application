@@ -63,8 +63,6 @@ function App() {
   };
 
   const sortTasks = (sort) => {
-    console.log(sort);
-    console.log(tasks);
     setSortBy(sort);
   };
 
