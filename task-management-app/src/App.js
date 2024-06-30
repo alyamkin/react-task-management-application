@@ -55,17 +55,11 @@ function App() {
   return (
     <Fragment>
       <Header />
-      <CreateTaskForm onSubmitCreateTaskForm={createTask} />
-      {/* <Container maxWidth="sm">
-        <SearchBar onSearchTasks={searchTasks} />
+      <Container maxWidth="md">
+        <CreateTaskForm onSubmitCreateTaskForm={createTask} />
       </Container>
-      <Container maxWidth="sm">
-        <Sort onSortTasks={sortTasks} />
-      </Container> */}
       <Container maxWidth="sm">
         <SearchSortPanel onSearchTasks={searchTasks} onSortTasks={sortTasks} />
-      </Container>
-      <Container maxWidth="sm">
         <TasksList
           tasks={tasks}
           searchText={searchText}
