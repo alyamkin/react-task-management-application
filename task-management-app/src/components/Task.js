@@ -216,7 +216,7 @@ export default function Task({ task, onDeleteTask, onUpdateTask }) {
   );
 
   return (
-    <Card>
+    <Card sx={{ mb: 2 }}>
       <CardHeader
         title={titleContent}
         titleTypographyProps={titleTypographyProps}

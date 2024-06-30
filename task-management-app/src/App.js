@@ -4,12 +4,12 @@ import Header from './components/Header';
 import CreateTaskForm from './components/CreateTaskForm';
 import TasksList from './components/TasksList';
 import { Container } from '@mui/material';
-import SearchBar from './components/SearchBar';
-import { Box } from '@mui/material';
+import SearchSortPanel from './components/SearchSortPanel';
 
 function App() {
   const [tasks, setTasks] = useState([]);
   const [searchText, setSearchText] = useState('');
+  const [sortBy, setSortBy] = useState('title');
 
   const createTask = (title, description, dueDateTime) => {
     const task = {
@@ -48,17 +48,28 @@ function App() {
     setSearchText(search);
   };
 
+  const sortTasks = (sort) => {
+    setSortBy(sort);
+  };
+
   return (
     <Fragment>
       <Header />
       <CreateTaskForm onSubmitCreateTaskForm={createTask} />
-      <Container maxWidth="sm">
+      {/* <Container maxWidth="sm">
         <SearchBar onSearchTasks={searchTasks} />
+      </Container>
+      <Container maxWidth="sm">
+        <Sort onSortTasks={sortTasks} />
+      </Container> */}
+      <Container maxWidth="sm">
+        <SearchSortPanel onSearchTasks={searchTasks} onSortTasks={sortTasks} />
       </Container>
       <Container maxWidth="sm">
         <TasksList
           tasks={tasks}
           searchText={searchText}
+          sortBy={sortBy}
           onDeleteTask={deleteTask}
           onUpdateTask={updateTask}
         />

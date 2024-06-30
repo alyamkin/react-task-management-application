@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
@@ -7,6 +6,10 @@ import dayjs from 'dayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { DateTimePicker } from '@mui/x-date-pickers/DateTimePicker';
+import Accordion from '@mui/material/Accordion';
+import AccordionSummary from '@mui/material/AccordionSummary';
+import AccordionDetails from '@mui/material/AccordionDetails';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
 const styles = {
   field: {
@@ -79,53 +82,60 @@ export default function CreateTaskForm({ onSubmitCreateTaskForm }) {
   };
 
   return (
-    <Container maxWidth="sm">
-      <Typography variant="h6" component="h2" gutterBottom>
-        Create a new Task
-      </Typography>
-
-      <form noValidate autoComplete="off" onSubmit={handleSubmit}>
-        <TextField
-          onChange={onChangeTitle}
-          value={title}
-          sx={styles.field}
-          label="Title"
-          variant="outlined"
-          fullWidth
-          error={titleError}
-          required
-        />
-        <LocalizationProvider dateAdapter={AdapterDayjs}>
-          <DateTimePicker
-            sx={styles.datePicker}
-            label="Due Date and Time"
-            value={dueDateTime}
-            onChange={onChangeDateTimePicker}
-            disablePast
-            slotProps={{
-              textField: {
-                helperText: dueDateTimeErrorMessage,
-              },
-            }}
+    <Accordion sx={{ mb: 2 }}>
+      <AccordionSummary
+        expandIcon={<ExpandMoreIcon />}
+        aria-controls="panel1-content"
+        id="panel1-header"
+      >
+        <Typography variant="h6" component="h2" gutterBottom>
+          Create a new Task
+        </Typography>
+      </AccordionSummary>
+      <AccordionDetails>
+        <form noValidate autoComplete="off" onSubmit={handleSubmit}>
+          <TextField
+            onChange={onChangeTitle}
+            value={title}
+            sx={styles.field}
+            label="Title"
+            variant="outlined"
+            fullWidth
+            error={titleError}
+            required
           />
-        </LocalizationProvider>
-        <TextField
-          onChange={onChangeDescription}
-          value={description}
-          sx={styles.field}
-          label="Description"
-          variant="outlined"
-          fullWidth
-          multiline
-          rows={4}
-          error={descriptionError}
-          required
-        />
-        <Button type="submit" color="primary" variant="contained">
-          {' '}
-          Create Task
-        </Button>
-      </form>
-    </Container>
+          <LocalizationProvider dateAdapter={AdapterDayjs}>
+            <DateTimePicker
+              sx={styles.datePicker}
+              label="Due Date and Time"
+              value={dueDateTime}
+              onChange={onChangeDateTimePicker}
+              disablePast
+              slotProps={{
+                textField: {
+                  helperText: dueDateTimeErrorMessage,
+                },
+              }}
+            />
+          </LocalizationProvider>
+          <TextField
+            onChange={onChangeDescription}
+            value={description}
+            sx={styles.field}
+            label="Description"
+            variant="outlined"
+            fullWidth
+            multiline
+            rows={4}
+            error={descriptionError}
+            required
+          />
+          <Button type="submit" color="primary" variant="contained">
+            {' '}
+            Create Task
+          </Button>
+        </form>
+      </AccordionDetails>
+    </Accordion>
   );
 }

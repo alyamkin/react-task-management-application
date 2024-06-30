@@ -17,12 +17,9 @@ export default function SearchBar({ onSearchTasks }) {
 
   return (
     <TextField
+      sx={{ mb: 2 }}
       value={searchText}
       onChange={handleChangeSearchTask}
-      onBlur={() => {
-        setSearchText('');
-        onSearchTasks('');
-      }}
       label="Search by title"
       InputProps={{
         endAdornment: (
