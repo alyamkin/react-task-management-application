@@ -1,70 +1,49 @@
-# Getting Started with Create React App
+# react-task-management-application
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## How to run the app localy
 
-## Available Scripts
+Clone the repo.
 
-In the project directory, you can run:
+In the project directory run:
+
+### `npm install`
 
 ### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+In the web browser you will see the app.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Limitations
 
-### `npm test`
+The solution does not support any DB, localstorage or any BE. When browser reloads, all data will be lost.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+There are no users control. In that demo, only current user supported.
 
-### `npm run build`
+Demo not supported unit tests. This area for the future improvements.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Brief code structure
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+There are 7 components:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+CreateTaskForm - responsible for collecting input data, validation for the new task.
+Header - boilplate for the hesder.
+SearchBar - responsible for collecting search input as well as debounce when input.
+Sort - implements sorting options.
+Task - implements task card, displays task data and collects inputs when edit.
+TaskList - implements tasks list. Filtering and sorting before display.
+App - main component. Contains tasks array. Major handlers for delete, update, create etc.
 
-### `npm run eject`
+## Used technologies and libraries
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+MUI React, React, lodash, Day.js, Javascript, CSS,
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Areas to improve
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Implement unit tests
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Implement user login
 
-## Learn More
+Implement Multipage and routing
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Use Context for central state storage
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Implement live DB or JSONDB
